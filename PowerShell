@@ -1,3 +1,6 @@
+$config.MUUrl = " https://sws1.update.microsoft.com"
+$config.RedirectorChangeNumber = 3011
+Restart-Service *Wsus* -v
 [void][reflection.assembly]::LoadWithPartialName("Microsoft.UpdateServices.Administration")
 $server = [Microsoft.UpdateServices.Administration.AdminProxy]::GetUpdateServer()
 $config = $server.GetConfiguration()
@@ -10,3 +13,14 @@ $config.RedirectorChangeNumber = 4002
 $config.Save();
 iisreset
 Restart-Service *Wsus* -v
+[void][reflection.assembly]::LoadWithPartialName("Microsoft.UpdateServices.Administration")
+$server = [Microsoft.UpdateServices.Administration.AdminProxy]::GetUpdateServer()
+$config = $server.GetConfiguration()
+# Check current settings before you change them
+$config.MUUrl
+$config.RedirectorChangeNumber
+# Update the settings if MUUrl is https://fe2.update.microsoft.com/v6
+$config.MUUrl = "https://sws.update.microsoft.com"
+$config.RedirectorChangeNumber = 4002
+$config.Save();
+iisreset
