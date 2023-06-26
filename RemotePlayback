@@ -1,0 +1,4 @@
+<video id="videoElement"
+src="https://example.org/media.ext">
+<button id="deviceBtn"
+style="display: none;">Pick device</button> </video>
