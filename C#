@@ -1,0 +1,4 @@
+[GuidAttribute("6391AFBB-45A8-4107-A154-F27DB8F03049")]
+[ClassInterfaceAttribute(ClassInterfaceType.None)]
+[ComVisibleAttribute(true)]
+public sealed class AdminProxy
