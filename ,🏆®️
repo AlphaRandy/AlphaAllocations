@@ -1,0 +1,22 @@
+markdown := goldmark.New(
+    goldmark.WithExtensions(
+        NewFootnote(
+                WithFootnoteIDPrefixFunction(func(n gast.Node) []byte {
+                    v, ok := n.OwnerDocument().Meta()["footnote-prefix"]
+                    if ok {
+                        return util.StringToReadOnlyBytes(v.(string))
+                    }
+                    return nil
+                }),
+        ),
+    ),
+)
+
+for _, path := range files {
+    source := readAll(path)
+    var b bytes.Buffer
+
+    doc := markdown.Parser().Parse(text.NewReader(source))
+    doc.Meta()["footnote-prefix"] = getPrefix(path)
+    err := markdown.Renderer().Render(&b, source, doc)
+} 
