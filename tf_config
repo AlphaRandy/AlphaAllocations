@@ -1,0 +1,4 @@
+$ t2t-make-tf-configs --masters='10.0.0.1:5555' --ps='10.0.0.2:5555,10.0.0.3:5555'
+Assuming SYNC distributed training with a single master and 2 workers
+'{"cluster": {"master": ["10.0.0.1:5555"], "ps": ["10.0.0.2:5555", "10.0.0.3:5555"]}, "environment": "cloud", "task": {"index": 0, "type": "master"}}'      --master=grpc://10.0.0.1:5555 --ps_replicas=2 --worker_replicas=1 --worker_gpu=0 --worker_id=0 --ps_gpu=1 --sync --schedule=train --worker_job='/job:master'
+'{"cluster": {"master": ["10.0.0.1:5555"], "ps
